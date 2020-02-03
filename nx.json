@@ -10,5 +10,12 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "api": {
+      "tags": []
+    },
+    "api-2": {
+      "tags": []
+    }
+  }
 }
