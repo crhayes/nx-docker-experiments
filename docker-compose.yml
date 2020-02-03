@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - '80:80'
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  base:
+    image: base
+    build: .
+
+  api:
+    build: ./apps/api/
+    depends_on:
+      - base
+    expose:
+      - '3333'
+    environment:
+      - VIRTUAL_HOST=one.derp.local
+
+  api-2:
+    build: ./apps/api-2/
+    depends_on:
+      - base
+    expose:
+      - '3333'
+    environment:
+      - VIRTUAL_HOST=two.derp.local
